@@ -1,0 +1,21 @@
+<!-- views/login.ejs -->
+<%- include('partials/header') %>
+<section class="auth">
+  <h1>Acesso</h1>
+  <% if (error) { %>
+    <div class="alert"><%= error %></div>
+  <% } %>
+  <form method="post" action="/login" class="form">
+    <input type="hidden" name="next" value="<%= nextUrl || '/' %>">
+    <label>Usuário
+      <input name="username" placeholder="aluno" required>
+    </label>
+    <label>Senha
+      <input type="password" name="password" placeholder="senha123" required>
+    </label>
+    <button class="btn" type="submit">Entrar</button>
+    
+  </form>
+</section>
+<%- include('partials/footer') %>
+

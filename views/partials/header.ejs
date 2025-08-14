@@ -1,0 +1,25 @@
+<!-- views/partials/header.ejs -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Academy - Cursos Online</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container flex between center">
+      <a class="brand" href="/">Academy Tecnologia</a>
+      <nav class="nav">
+        <% if (isAuthenticated) { %>
+          <form action="/logout" method="post">
+            <button class="btn btn-outline" type="submit">Sair (<%= user.username %>)</button>
+          </form>
+        <% } else { %>
+          <a class="btn" href="/login">Entrar</a>
+        <% } %>
+      </nav>
+    </div>
+  </header>
+  <main class="container">

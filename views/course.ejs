@@ -1,0 +1,36 @@
+<!-- views/course.ejs -->
+<%- include('partials/header') %>
+<article class="course">
+  <a href="/" class="link-back">← Voltar</a>
+  <h1><%= course.nome %></h1>
+  <div class="course-info">
+    <ul class="meta">
+      <li><strong>Início:</strong> <%= new Date(course.dataInicio).toLocaleDateString('pt-BR') %></li>
+      <li><strong>Duração:</strong> <%= course.duracao %></li>
+      <li><strong>Nível:</strong> <%= course.nivel %></li>
+      <li><strong>Carga horária:</strong> <%= course.cargaHoraria %></li>
+      <li><strong>Instrutor:</strong> <%= course.instrutor %></li>
+      <li><strong>Vagas:</strong> <%= course.vagas %></li>
+    </ul>
+    <p class="desc"><%= course.descricao %></p>
+  </div>
+
+  <section class="purchase" data-preco="<%= course.preco %>">
+    <h2>Comprar</h2>
+    <div class="price-line">
+      <span>Preço unitário:</span>
+      <strong id="price"><%= course.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) %></strong>
+    </div>
+    <label>Quantidade
+      <input id="qty" type="number" min="1" max="<%= course.vagas %>" value="1" />
+    </label>
+    <div class="total-line">
+      <span>Total:</span>
+      <strong id="total"></strong>
+    </div>
+    <p class="note">* Cálculo do total feito no navegador usando JavaScript servido pelo Node.</p>
+  </section>
+
+  <script src="/js/details.js"></script>
+</article>
+<%- include('partials/footer') %>

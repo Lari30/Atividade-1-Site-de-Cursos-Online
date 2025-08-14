@@ -1,0 +1,21 @@
+<!-- views/index.ejs -->
+<%- include('partials/header') %>
+<section>
+  <h1>Cursos disponíveis</h1>
+  <div class="grid">
+    <% courses.forEach(c => { %>
+      <article class="card">
+        <h2><%= c.nome %></h2>
+        <ul class="meta">
+          <li><strong>Início:</strong> <%= new Date(c.dataInicio).toLocaleDateString('pt-BR') %></li>
+          <li><strong>Duração:</strong> <%= c.duracao %></li>
+          <li><strong>Preço:</strong> <%= c.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) %></li>
+        </ul>
+        <div class="actions">
+          <a class="btn" href="/curso/<%= c.id %>">Ver detalhes</a>
+        </div>
+      </article>
+    <% }) %>
+  </div>
+</section>
+<%- include('partials/footer') %>
